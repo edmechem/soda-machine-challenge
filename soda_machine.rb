@@ -19,14 +19,18 @@ class SodaMachine
     soda = find_soda(soda_brand)
     if soda != nil
       @cash += soda.price
-      idx_to_remove = 0
-      @sodas.each_with_index do |item, index| 
-        if item.object_id == soda.object_id
-          idx_to_remove = index
-        end
-      end
-      sodas.delete_at(idx_to_remove)
+      sodas.delete_if{ |soda| soda.brand == soda_brand}
     end
   end
 
 end
+
+
+# Ugly first way of deleting soda
+# idx_to_remove = 0
+# @sodas.each_with_index do |item, index| 
+#   if item.object_id == soda.object_id
+#     idx_to_remove = index
+#   end
+# end
+# sodas.delete_at(idx_to_remove)
